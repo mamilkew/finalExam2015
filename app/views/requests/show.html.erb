@@ -61,8 +61,8 @@
     </div>
 
     <!--<div class="field">-->
-      <!--<%= f.label :user_id %>-->
-      <!--<%= f.number_field :user_id, :value => current_user.id, :readonly => true %>-->
+      <!--<%# f.label :user_id %>-->
+      <!--<%# f.number_field :user_id, :value => current_user.id, :readonly => true %>-->
     <!--</div>-->
     <%= hidden_field_tag(:user_id, current_user.id) %>
     <%= hidden_field_tag(:request_id, @request.id) %>

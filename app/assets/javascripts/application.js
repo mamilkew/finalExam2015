@@ -19,12 +19,12 @@ function getComment(){
     var url = window.location.pathname;
     var id = url.substring(url.lastIndexOf('/') +1);
     $.getJSON("/requests/"+id+"/comments.json", null, function(json) {
-        var remove = $('#ice tr').attr(id);
+        // var remove = $('#ice tr').attr(id);
         $('#ice').find('tbody').remove();
        $.each(json, function(i, data){
            $('#ice').append("<tbody><tr><td>"+data.title+"</td><td>"+data.description+"</td><td>"+data.user_id+"</td><td>"+data.request_id+"</td></tr></tbody>");
        });
-        // setTimeout(getComment(),10000);
+        setTimeout(getComment,10000);
     });
 }
 

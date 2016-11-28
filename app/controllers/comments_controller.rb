@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @request = Request.find(params[:request_id])
+    @comments = Comment.where(request_id: @request.id)
   end
 
   # GET /comments/1
@@ -42,7 +43,7 @@ class CommentsController < ApplicationController
   def create
     respond_to do |format|
       if  @request.comments.create(comment_params.merge(:user_id => current_user.id))
-        format.html { redirect_to @request, notice: 'Student was successfully created.' }
+        format.html { redirect_to request_path(@request), notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @request }
       else
         format.html { render :new }
